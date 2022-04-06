@@ -1,5 +1,15 @@
 // factorial calculator
 #include <iostream>
+#include <cstdlib>
+
+long factorial (long a);
+
+int main (int argc, char **argv)
+{
+  long number = std::atoi(argv[1]);
+  std::cout << number << "! = " << factorial (number) << "\n";
+  return 0;
+}
 
 long factorial (long a)
 {
@@ -7,11 +17,4 @@ long factorial (long a)
     return (a * factorial (a-1));
   else
     return 1;
-}
-
-int main ()
-{
-  long number = 9;
-  std::cout << number << "! = " << factorial (number);
-  return 0;
 }
