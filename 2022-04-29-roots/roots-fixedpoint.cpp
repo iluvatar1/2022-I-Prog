@@ -9,9 +9,7 @@ const double VT = 40;
 const double T = 10;
 
 double f(double x);
-double fderiv(double x);
 double g(double x);
-
 // retorna la raiz, que es un double
 // fptr es un apuntador a funcion del tipo
 // using fptr = double(double)
@@ -19,40 +17,31 @@ double g(double x);
 double bisection(double xl, double xu, double eps, fptr func, int nmax, int & nsteps);
 double regulafalsi(double xl, double xu, double eps, fptr func, int nmax, int & nsteps);
 double fixedpoint(double x0, double eps, fptr func, int nmax, int & nsteps);
-double newton(double x0, double eps, fptr func, fptr deriv, int nmax, int & nsteps);
 
 int main (int argc, char *argv[])
 {
-    double XL = std::atof(argv[1]);
-    double XU = std::atof(argv[2]);;
-    double eps = std::atof(argv[3]);
-    int NMAX = 1000;
-    std::cout.precision(15); std::cout.setf(std::ios::scientific);
-    int steps = 0;
-    double root = bisection(XL, XU, eps, f, NMAX, steps);
-    std::cout << "\t" << root << "\t" << f(root) << "\t" << steps << "\n";
-    //root = regulafalsi(XL, XU, eps, f, NMAX, steps);
-    //std::cout << "\t" << root << "\t" << f(root) << "\t" << steps << "\n";
-    root = fixedpoint(XL, eps, g , NMAX, steps);
-    std::cout << "\t" << root << "\t" << f(root) << "\t" << steps << "\n";
-    root = newton(XL, eps, f, fderiv, NMAX, steps);
-    std::cout << "\t" << root << "\t" << f(root) << "\t" << steps << "\n";
+  double XL = std::atof(argv[1]);
+  double XU = std::atof(argv[2]);;
+  double eps = std::atof(argv[3]);
+  int NMAX = 1000;
+  std::cout.precision(15); std::cout.setf(std::ios::scientific);
+  int steps = 0;
+  double root = bisection(XL, XU, eps, f, NMAX, steps);
+  std::cout << "\t" << root << "\t" << f(root) << "\t" << steps << "\n";
+  //root = regulafalsi(XL, XU, eps, f, NMAX, steps);
+  //std::cout << "\t" << root << "\t" << f(root) << "\t" << steps << "\n";
+  root = fixedpoint(XL, eps, g , NMAX, steps);
+  std::cout << "\t" << root << "\t" << f(root) << "\t" << steps << "\n";
 }
 
 double f(double x)
 {
-    return M*G*(1 - std::exp(-x*T/M))/x - VT;
-}
-
-double fderiv(double x)
-{
-    double h = 0.001;
-    return (f(x+h/2) - f(x-h/2))/h;
+  return M*G*(1 - std::exp(-x*T/M))/x - VT;
 }
 
 double g(double x)
 {
-    return M*G*(1 - std::exp(-x*T/M))/VT;
+  return M*G*(1 - std::exp(-x*T/M))/VT;
 }
 
 
@@ -86,21 +75,6 @@ double fixedpoint(double x0, double eps, fptr func, int nmax, int & nsteps)
             break;
         } else {
             xr = func(xr); // NOTE: func es g(x), no f(x)
-        }
-        nsteps++;
-    }
-
-    return xr;
-}
-double newton(double x0, double eps, fptr func, fptr deriv, int nmax, int & nsteps)
-{
-    nsteps = 0;
-    double xr = x0;
-    while(nsteps <= nmax) {
-        if (std::fabs(func(xr)) < eps) {
-            break;
-        } else {
-            xr = xr - func(xr)/deriv(xr);
         }
         nsteps++;
     }
