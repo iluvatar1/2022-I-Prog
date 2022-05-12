@@ -18,14 +18,13 @@ int main(void)
   //std::cout << data[-1] << std::endl; // detected by sanitizers address
 
 // initialize the array with even numbers
-  for(int ii = 0; ii < N; ++ii) {
-    data[ii] = 2*ii;
-  }
+  int ii = 0 ;
+  auto init  = [&ii](double & x){ x = 2*ii; ii++; };
+  std::for_each(data.begin(), data.end(), init);
 
 // print the array
-  for(auto x : data){
-    std::cout << x << "  ";
-  }
+  auto print = [](const int & x) { std::cout << x << "  " ; };
+  std::for_each(data.begin(), data.end(), print);
   std::cout << "\n";
 
 // compute mean
