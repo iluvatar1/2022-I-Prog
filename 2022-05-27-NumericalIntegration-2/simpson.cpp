@@ -69,6 +69,9 @@ double trapezoid_richardson(const double a, const double b, const int n, fptr fu
 template <typename fptr>
 double simpson(const double a, const double b, const int n, fptr func)
 {
+  if (n%2 != 0) {
+    n = n+1;
+  }
   double sum = 0, result = func(a) + func(b);
   double x;
   const double h = (b-a)/n;
