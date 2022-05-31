@@ -69,22 +69,23 @@ double trapezoid_richardson(const double a, const double b, const int n, fptr fu
 template <typename fptr>
 double simpson(const double a, const double b, const int n, fptr func)
 {
+  int nlocal = n;
   if (n%2 != 0) {
-    n = n+1;
+    nlocal = n+1;
   }
   double sum = 0, result = func(a) + func(b);
   double x;
-  const double h = (b-a)/n;
+  const double h = (b-a)/nlocal;
 
   sum = 0;
-  for(int ii = 1; ii <= n/2 - 1; ++ii ) {
+  for(int ii = 1; ii <= nlocal/2 - 1; ++ii ) {
     x = a + 2*ii*h;
     sum += func(x);
   }
   result += 2*sum;
 
   sum = 0;
-  for(int ii = 1; ii <= n/2; ++ii ) {
+  for(int ii = 1; ii <= nlocal/2; ++ii ) {
     x = a + (2*ii-1)*h;
     sum += func(x);
   }
