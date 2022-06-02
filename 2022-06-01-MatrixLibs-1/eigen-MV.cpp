@@ -1,6 +1,6 @@
 // Second example, slighlty modified to include namespaces explicitly
 #include <iostream>
-#include <eigen3/Eigen/Dense>
+#include <eigen/Eigen/Dense>
 
 int main(int argc, char **argv)
 {

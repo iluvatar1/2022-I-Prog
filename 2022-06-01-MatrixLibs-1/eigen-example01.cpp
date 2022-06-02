@@ -1,7 +1,7 @@
 // First example on how to use eigen
 // compile with: g++ -std=c++11 -I /usr/include/eigen3 17-eigen-example01.cpp
 #include <iostream>
-#include <eigen3/Eigen/Dense>
+#include <eigen/Eigen/Dense>
 
 int main()
 {
