@@ -24,5 +24,5 @@ void solvesystem(int size)
   auto end   = std::chrono::steady_clock::now();
 
   std::chrono::duration<double> elapsed_seconds = end-start;
-  std::cout << size*size << "\t" << elapsed_seconds.count() << std::endl;
+  std::cout << size*size << "\t" << elapsed_seconds.count() << "\t" << x(0) << std::endl;
 }
