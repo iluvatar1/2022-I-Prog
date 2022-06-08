@@ -29,4 +29,6 @@ int main()
     v2.resize(4); // sizes must match when assigning from gen subscript
     v2 = v1[idx]; // (7): from indirect array
     print("values at positions 0, 1, 2, 4:", v2);
+
+    std::cout << v2 << "\n";
 }
