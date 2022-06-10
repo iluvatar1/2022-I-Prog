@@ -29,8 +29,8 @@ int main(void)
 
 void initial_conditions(state_t & y)
 {
-  y[0] = 0.9876;
-  y[1] = 0.0;
+  y[0] = 0.9876; // x
+  y[1] = 0.0; // v
 }
 
 void print(const state_t & y, double time)
@@ -52,10 +52,10 @@ void integrate_euler(deriv_t deriv, system_t & y, double tinit, double tend, dou
   double time = 0;
   int nsteps = (tend - tinit)/dt;
   for(int ii = 0; ii < nsteps; ++ii) {
-	time = 0.0 + ii*dt;
+	time = tinit + ii*dt;
     deriv(y, dydt, time);
     for (int ii = 0; ii < N; ++ii) {
-      y[ii] += dt*dydt[ii];
+      y[ii] += dt*dydt[ii]; //y[ii] = y[ii] + dt*dydt[ii]; // EULER
     }
 	print(y, time);
   }
