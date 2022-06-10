@@ -17,7 +17,7 @@ void integrate_euler(deriv_t deriv, system_t & y, double tinit, double tend, dou
 
 int main(void)
 {
-  const double DT = 0.01;
+  const double DT = 0.001;
   const double TF = 4*2*M_PI/W;
   const int N = 2;
   state_t y(N);
