@@ -81,10 +81,10 @@ void integrate_rk4(deriv_t deriv, system_t & y, double tinit, double tend, doubl
   system_t dydt(N, 0.0);
   system_t k1(N), k2(N), k3(N), k4(N), aux(N);
 
-  double time = 0;
+  double time = tinit;
   int nsteps = (tend - tinit)/dt;
-  for(int ii = 0; ii < nsteps; ++ii) {
-    time = 0.0 + ii*dt;
+  for(int itime = 0; itime < nsteps; ++itime) {
+    time = tinit + itime*dt;
     // k1
     deriv(y, dydt, time);
     for(int ii = 0; ii < N; ++ii) {
