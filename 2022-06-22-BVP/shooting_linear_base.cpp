@@ -4,7 +4,7 @@
 #include <cstdlib>
 #include <boost/numeric/odeint.hpp>
 
-// constants
+// constants : In the future, better read them from the command line
 const double H = 0.05;
 const double TINF = 400;
 const double T0 = 300;
