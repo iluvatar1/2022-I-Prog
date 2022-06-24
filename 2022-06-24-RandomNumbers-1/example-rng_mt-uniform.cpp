@@ -6,8 +6,8 @@
 
 int main(int argc, char **argv)
 {
-  if (4 != argc) {
-    std::cerr << "Error. Usage:\n" << argv[0] << "SEED SAMPLES A B\n";
+  if (5 != argc) {
+    std::cerr << "Error. Usage: \n" << argv[0] << " SEED SAMPLES A B\n";
     return 1;
   }
   const int SEED = std::atoi(argv[1]);;

@@ -7,7 +7,7 @@
 int main(int argc, char **argv)
 {
   if (8 != argc) {
-    std::cerr << "Error. Usage:\n" << argv[0] << "SEED SAMPLES A B XMIN XMAX NBINS\n";
+    std::cerr << "Error. Usage:\n" << argv[0] << " SEED SAMPLES A B XMIN XMAX NBINS\n";
     return 1;
   }
   const int SEED = std::atoi(argv[1]);
@@ -21,7 +21,8 @@ int main(int argc, char **argv)
 
   std::vector<double> histo(NBINS, 0.0);
   std::mt19937 gen(SEED);
-  std::uniform_real_distribution<double> dist(A, B);
+  //std::uniform_real_distribution<double> dist(A, B);
+  std::normal_distribution<double> dist(A, B);
   std::ofstream fout("data.txt");
   for (int ii = 0; ii < SAMPLES; ++ii) {
     double r = dist(gen);

@@ -6,8 +6,8 @@
 
 int main(int argc, char **argv)
 {
-  if (4 != argc) {
-    std::cerr << "Error. Usage:\n" << argv[0] << "SEED SAMPLES A B\n";
+  if (5 != argc) {
+    std::cerr << "Error. Usage:\n" << argv[0] << " SEED SAMPLES A B\n";
     return 1;
   }
   const int SEED = std::atoi(argv[1]);;
@@ -17,7 +17,7 @@ int main(int argc, char **argv)
 
   std::mt19937 gen(SEED);
   //std::uniform_real_distribution<double> dist(A, B);
-  ???
+  std::normal_distribution<double> dist(A, B);
   std::ofstream fout("data.txt");
   for (int ii = 0; ii < SAMPLES; ++ii) {
     double r = dist(gen);
